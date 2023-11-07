@@ -6,9 +6,11 @@ app.use(cors());
 var response = {};
 
 app.get("/", (req, res) => {
-  let pageIndex = (req.query.page - 1).toString();
+  let tableID = req.query.t;
 
-  fetch("http://127.0.0.1:5500/data.json")
+  fetch(
+    `https://getpantry.cloud/apiv1/pantry/339ed5fe-a063-4aea-aed8-424e2637273a/basket/${tableID}`
+  )
     .then((recv) => {
       return recv.json();
     })
