@@ -3,14 +3,14 @@ const cors = require("cors");
 
 const app = express();
 app.use(cors());
+
+const pantryId = process.env.PANTRY_ID;
 var response = {};
 
-app.get("/", (req, res) => {
+app.get("/view", (req, res) => {
   let tableID = req.query.t;
 
-  fetch(
-    `https://getpantry.cloud/apiv1/pantry/339ed5fe-a063-4aea-aed8-424e2637273a/basket/${tableID}`
-  )
+  fetch(`https://getpantry.cloud/apiv1/pantry/${pantryId}/basket/$${tableID}`)
     .then((recv) => {
       return recv.json();
     })
