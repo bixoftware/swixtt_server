@@ -9,10 +9,7 @@ var response = {};
 
 app.get("/view", (req, res) => {
   let tableID = req.query.t;
-  console.log(
-    `https://getpantry.cloud/apiv1/pantry/${pantryId}/basket/$${tableID}`
-  );
-  fetch(`https://getpantry.cloud/apiv1/pantry/${pantryId}/basket/$${tableID}`)
+  fetch(`https://getpantry.cloud/apiv1/pantry/${pantryId}/basket/${tableID}`)
     .then((recv) => {
       return recv.json();
     })
