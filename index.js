@@ -9,7 +9,9 @@ var response = {};
 
 app.get("/view", (req, res) => {
   let tableID = req.query.t;
-  fetch(`https://getpantry.cloud/apiv1/pantry/${pantryId}/basket/${tableID}`)
+  let pantryURL = `https://getpantry.cloud/apiv1/pantry/${pantryId}/basket/${tableID}`;
+  // let pantryURL = `http://127.0.0.1:5500/data.json`
+  fetch(pantryURL)
     .then((recv) => {
       return recv.json();
     })
@@ -21,7 +23,7 @@ app.get("/view", (req, res) => {
       res.json(response);
       console.log("Request Handling successful");
       console.log("Served time table with ID:", data.id);
-      console.log("======");
+      console.log("==========================");
     })
     .catch((err) => {
       response = {
@@ -31,7 +33,7 @@ app.get("/view", (req, res) => {
       res.json(response);
       console.log("Request Handling failed");
       console.error(err);
-      console.log("======");
+      console.log("+++++++++++++++++++++++++");
     });
 });
 
